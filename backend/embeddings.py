@@ -8,11 +8,8 @@ def load_model():
     for model in models["models"]:
         if model.model.startswith(model_name):
             return model_name
-        raise RuntimeError(f"{model_name} is not available in Ollama.")
-    
-    if __name__ == "__main__":
-        model = load_model()
-        print(f"Model loaded: {model}")
+        
+    raise RuntimeError(f"{model_name} is not available in Ollama.")
 
 def generate_embeddings(chunks):
     model_name = load_model()
@@ -37,6 +34,4 @@ if __name__ == "__main__":
 
     print(f"Number of embeddings:{len(embeddings)}")
     print(f"First embedding:{embeddings[0]}")
-    print(F"Vector length:{len(embeddings[0])}")
-
- 
+    print(f"Vector length:{len(embeddings[0])}")

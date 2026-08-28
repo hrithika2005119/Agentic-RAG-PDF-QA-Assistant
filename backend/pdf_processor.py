@@ -14,8 +14,9 @@ def extract_text(pdf_path: Path):
                 "text": text
             }
         )
-        doc.close()
-        return pages 
+        
+    doc.close()
+    return pages 
        
 def extract_metadata(pdf_path: Path) :
     doc = fitz.open(pdf_path)
