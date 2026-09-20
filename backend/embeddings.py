@@ -19,16 +19,18 @@ def generate_embeddings(chunks):
     for chunk in chunks:
         response = ollama.embed(
             model = model_name, 
-            input = chunk
+            input = chunk["text"]
             )
         embeddings.append(response["embeddings"][0])
 
     return embeddings
 
 if __name__ == "__main__":
-    sample_chunks = ["Python is a programming language.", 
-                     "Ollama runs AI models locally.", 
-                     "Embeddings convert text into numbers."]
+    sample_chunks = [
+        {"chunk_id": 1, "page": 1, "text":"Python is a programming language."}, 
+        {"chunk_id": 2, "page": 1, "text":"Ollama runs AI models locally."} ,
+        {"chunk_id": 3, "page": 2, "text": "Embeddings convert text into numbers."}
+                    ]
     
     embeddings = generate_embeddings(sample_chunks)
 
